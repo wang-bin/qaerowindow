@@ -19,8 +19,21 @@
 
 #include "qaerowindow.h"
 
+QAeroWidget::QAeroWidget(Effect e, QWidget *parent, Qt::WFlags flags)
+	:QWidget(parent, flags),effect(e),effect_alpha(0)
+{
+	if (effect != QAeroWidget::None) {
+		setAttribute(Qt::WA_ContentsPropagated);
+		setAttribute(Qt::WA_TranslucentBackground, true);
+	}
+	init();
+}
 
-
+QAeroWidget::QAeroWidget(QWidget *parent, Qt::WFlags flags)
+	:QWidget(parent, flags),effect(Blur),effect_alpha(0)
+{
+	init();
+}
 
 QAeroWidget::~QAeroWidget()
 {

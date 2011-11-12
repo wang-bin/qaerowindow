@@ -12,6 +12,7 @@ public:
 		None, Aero, Blur, SemiTransparent
 	};
 
+	QAeroWidget(Effect e, QWidget *parent = 0, Qt::WFlags flags = 0);
 	QAeroWidget(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~QAeroWidget();
 
@@ -29,6 +30,8 @@ protected:
 	virtual bool winEvent(MSG *message, long *result);
 #endif //Q_OS_WIN
 private:
+	void init();
+
 	Effect effect;
 	qreal effect_alpha;
 };

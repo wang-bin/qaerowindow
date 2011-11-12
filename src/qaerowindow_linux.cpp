@@ -23,11 +23,8 @@
 #include <QtGui/QPainter>
 #include <QtGui/QResizeEvent>
 
-QAeroWidget::QAeroWidget(QWidget *parent, Qt::WFlags flags)
-	: QWidget(parent, flags)
+void QAeroWidget::init()
 {
-	effect = SemiTransparent;
-	effect_alpha = 0;
 	setAttribute(Qt::WA_TranslucentBackground);
 }
 

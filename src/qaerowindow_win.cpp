@@ -50,12 +50,11 @@ static PtrDwmEnableBlurBehindWindow DwmEnableBlurBehindWindow = 0;
 #endif
 
 
-QAeroWidget::QAeroWidget(QWidget *parent, Qt::WFlags flags)
-	: QWidget(parent, flags)
+void QAeroWidget::init()
 {
-	effect = Blur;
-	effect_alpha = 0;
-
+	if (effect == QAeroWidget::SemiTransparent) {
+		setWindowFlags(Qt::FramelessWindowHint);
+	}
 	QLibrary dwmapiLib("dwmapi.dll", this);
 	if (!dwmapiLib.load()) {
 		qWarning("Failed to load dwmapi.dll: %s", qPrintable(dwmapiLib.errorString()));
